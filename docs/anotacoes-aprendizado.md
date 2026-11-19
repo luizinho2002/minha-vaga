@@ -62,3 +62,28 @@ Fecha o `Scanner`, pois não vamos mais receber informações pelo terminal.
 `return;`
 
 Encerra a execução do método `main`, impedindo o restante do programa de continuar.
+
+## Método com parâmetros
+
+`exibirOportunidade(empresa, cargo);`
+
+Quando chamamos `exibirOportunidade(empresa, cargo)` enviamos ao método os valores que o usuário digitou.
+
+`String empresa` e `String cargo` são os parâmetros do método. Os parâmtros recebem os valores enviados para que sejam utilizados e exibidos no terminal.
+
+A ordem dos valores precisa corresponder à ordem dos parâmetros:
+
+- O primeiro valor enviado vai para o primeiro parâmetro.
+- O segundo valor enviado vai para o segundo parâmetro.
+
+## Ordem dos argumentos
+
+Ao chamar um método, os valores são enviados conforme a ordem.
+
+`exibirOportunidade(empresa, cargo);`
+
+O primeiro argumento vai para o primeiro parâmetro, e o segundo argumento vai para o segundo parâmetro.
+
+Se chamarmos exibirOportunidades(cargo, empresa), os valores serão recebidos de forma invertida.
+
+Resumo: a chamada envia, os parâmetros recebem e a ordem precisa ser respeitada.
