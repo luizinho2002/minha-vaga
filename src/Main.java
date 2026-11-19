@@ -28,10 +28,22 @@ public class Main {
             return;
         }
 
+        exibirMensagem("Dados recebidos com sucesso!");
+
+        exibirOportunidade(empresa, cargo);
+
+        scanner.close();
+    }
+
+    // Exibe os dados de uma oportunidade
+    public static void exibirOportunidade(String empresa, String cargo) {
         System.out.println("\n=== Oportunidade ===");
         System.out.println("Empresa: " + empresa);
         System.out.println("Cargo: " + cargo);
+    }
 
-        scanner.close();
+    // Exibe uma mensagem recebida pelo método
+    public static void exibirMensagem(String mensagem) {
+        System.out.println(mensagem);
     }
 }
