@@ -20,6 +20,14 @@ public class Main {
             return;
         }
 
+
+                 // Impede que o cargo fique vazio
+        if (cargo.isBlank()) {
+            System.out.println("O nome do cargo é obrigatório.");
+            scanner.close();
+            return;
+        }
+
         System.out.println("\n=== Oportunidade ===");
         System.out.println("Empresa: " + empresa);
         System.out.println("Cargo: " + cargo);
