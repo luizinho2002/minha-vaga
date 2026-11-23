@@ -4,7 +4,7 @@ public class Main {
     
     public static void main(String[] args) {
 
-        // Permite receber informações digitadas no terminal
+     
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Digite a empresa: ");
@@ -13,7 +13,7 @@ public class Main {
         System.out.print("Digite o cargo: ");
         String cargo = scanner.nextLine();
 
-        // Impede que a empresa fique vazia
+     
         if (empresa.isBlank()) {
             System.out.println("O nome da empresa é obrigatório.");
             scanner.close();
@@ -21,7 +21,6 @@ public class Main {
         }
 
 
-                 // Impede que o cargo fique vazio
         if (cargo.isBlank()) {
             System.out.println("O nome do cargo é obrigatório.");
             scanner.close();
@@ -32,18 +31,37 @@ public class Main {
 
         exibirOportunidade(empresa, cargo);
 
+        String resumo = criarResumo(empresa, cargo);
+
+        System.out.println("Resumo: " + resumo);
+
+        boolean resultadoValidacao = dadosValidados(empresa, cargo);
+
+        boolean testeInvalido = dadosValidos(empresa, "");
+
+        System.out.println("Dados válidos: " + resultadoValidacao);
+        System.out.println("Teste com cargo vazio: " + testeInvalido);
+
         scanner.close();
     }
 
-    // Exibe os dados de uma oportunidade
     public static void exibirOportunidade(String empresa, String cargo) {
         System.out.println("\n=== Oportunidade ===");
         System.out.println("Empresa: " + empresa);
         System.out.println("Cargo: " + cargo);
     }
 
-    // Exibe uma mensagem recebida pelo método
     public static void exibirMensagem(String mensagem) {
         System.out.println(mensagem);
+    }
+
+    public static String criarResumo(String empresa, String cargo) {
+        String resumo = empresa + " | " + cargo;
+
+        return resumo;
+    }
+
+    public static boolean dadosValidados(String empresa, String cargo) {
+        return !empresa.isBlank() && !cargo.isBlank();
     }
 }
