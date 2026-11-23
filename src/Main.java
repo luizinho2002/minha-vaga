@@ -4,17 +4,20 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Scanner.out.print("Digite a empresa: ");
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite a empresa: ");
         String empresa = scanner.nextLine();
 
-        System.out.print("Digite o cargo: ");
+        System.out.print("Digita o cargo: ");
         String cargo = scanner.nextLine();
 
         boolean resultadoValidacao = dadosValidos(empresa, cargo);
 
         if (resultadoValidacao) {
-            System.out.println("Empresa: " + empresa);
-            System.out.println("Cargo: " + cargo);
+            String resumo = criarResumo(empresa, cargo);
+
+            System.out.println("Resumo: " + resumo);
         } else {
             System.out.println("Empresa e cargo são obrigatórios.");
         }
@@ -24,5 +27,11 @@ public class Main {
 
     public static boolean dadosValidos(String empresa, String cargo) {
         return !empresa.isBlank() && !cargo.isBlank();
+    }
+
+    public static String criarResumo(String empresa, String cargo) {
+        String resumo = empresa + " | " + cargo;
+
+        return resumo;
     }
 }
