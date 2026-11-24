@@ -6,10 +6,17 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
+        cadastrarOportunidade(scanner);
+
+        scanner.close();
+    }
+
+    public static void cadastrarOportunidade(Scanner scanner) {
+
         System.out.print("Digite a empresa: ");
         String empresa = scanner.nextLine();
 
-        System.out.print("Digita o cargo: ");
+        System.out.print("Digite o cargo: ");
         String cargo = scanner.nextLine();
 
         boolean resultadoValidacao = dadosValidos(empresa, cargo);
@@ -17,12 +24,10 @@ public class Main {
         if (resultadoValidacao) {
             String resumo = criarResumo(empresa, cargo);
 
-            System.out.println("Resumo: " + resumo);
+            exibirOportunidade(resumo);
         } else {
             System.out.println("Empresa e cargo são obrigatórios.");
         }
-
-        scanner.close();
     }
 
     public static boolean dadosValidos(String empresa, String cargo) {
@@ -33,5 +38,10 @@ public class Main {
         String resumo = empresa + " | " + cargo;
 
         return resumo;
+    }
+
+    public static void exibirOportunidade(String resumo) {
+        System.out.println("\n=== Oportunidade ===");
+        System.out.println("Resumo: " + resumo);
     }
 }
