@@ -6,7 +6,27 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        cadastrarOportunidade(scanner);
+        String opcao;
+
+        do {
+            exibirMenu();
+
+            System.out.print("Escolha uma opção: ");
+            opcao = scanner.nextLine();
+
+            switch (opcao) {
+                case "1":
+                    cadastrarOportunidade(scanner);
+                    break;
+                
+                case "0":
+                    System.out.println("Programa encerrado.");
+                    break;
+                
+                default:
+                    System.out.println("Opção inválida.");
+            }
+        } while (!opcao.equals("0"));
 
         scanner.close();
     }
@@ -43,5 +63,11 @@ public class Main {
     public static void exibirOportunidade(String resumo) {
         System.out.println("\n=== Oportunidade ===");
         System.out.println("Resumo: " + resumo);
+    }
+
+    public static void exibirMenu() {
+        System.out.println("\n=== MINHAVAGA ===");
+        System.out.println("1. Cadastrar oportunidade");
+        System.out.println("0. Sair");
     }
 }
