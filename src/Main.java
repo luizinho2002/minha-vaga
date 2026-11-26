@@ -1,10 +1,12 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-
         Scanner scanner = new Scanner(System.in);
+
+        ArrayList<String> oportunidades = new ArrayList<>();
 
         String opcao;
 
@@ -16,13 +18,17 @@ public class Main {
 
             switch (opcao) {
                 case "1":
-                    cadastrarOportunidade(scanner);
+                    cadastrarOportunidade(scanner, oportunidades);
+                    break;
+
+                case "2":
+                    listarOportunidades(oportunidades);
                     break;
                 
                 case "0":
                     System.out.println("Programa encerrado.");
                     break;
-                
+
                 default:
                     System.out.println("Opção inválida.");
             }
@@ -31,8 +37,10 @@ public class Main {
         scanner.close();
     }
 
-    public static void cadastrarOportunidade(Scanner scanner) {
-
+    public static void cadastrarOportunidade(
+        Scanner scanner,
+        ArrayList<String> oportunidades 
+    ) {
         System.out.print("Digite a empresa: ");
         String empresa = scanner.nextLine();
 
@@ -42,11 +50,28 @@ public class Main {
         boolean resultadoValidacao = dadosValidos(empresa, cargo);
 
         if (resultadoValidacao) {
-            String resumo = criarResumo(empresa, cargo);
+            String resumo = criaResumo(empresa, cargo);
+
+            oportunidades.add(resumo);
 
             exibirOportunidade(resumo);
         } else {
             System.out.println("Empresa e cargo são obrigatórios.");
+        }
+    }
+
+    public static void listarOportunidades(
+        ArrayList<String> oportunidades 
+    ) {
+        if (oportunidades.isEmpty()) {
+            System.out.println("Nenhuma oportunidade cadastrada.");
+            return;
+        }
+
+        System.out.println("\n=== OPORTUNIDADES CADASTRADAS ===");
+
+        for (String oportunidade : oportunidades) {
+            System.out.println("- " + oportunidade);
         }
     }
 
@@ -61,13 +86,14 @@ public class Main {
     }
 
     public static void exibirOportunidade(String resumo) {
-        System.out.println("\n=== Oportunidade ===");
+        System.out.println("\n=== OPORTUNIDADE CADASTRADA ===");
         System.out.println("Resumo: " + resumo);
     }
 
     public static void exibirMenu() {
-        System.out.println("\n=== MINHAVAGA ===");
+        System.out.println("\n=== MINHAVAGA");
         System.out.println("1. Cadastrar oportunidade");
+        System.out.println("2. Listar oportunidades");
         System.out.println("0. Sair");
     }
 }
